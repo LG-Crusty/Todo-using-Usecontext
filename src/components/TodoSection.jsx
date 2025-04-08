@@ -9,7 +9,7 @@ const [todoMsg, settodoMsg] = useState(sendedTodo.task)
 
 
 const editTodo = ()=>{
-updateTodo(sendedTodo.id, {...sendedTodo, Todo: todoMsg})
+updateTodo(sendedTodo.id, todoMsg);
 setisEditable((prev) => !prev)}
  
 const complete = ()=>{taskComplete(sendedTodo.id)}
@@ -34,8 +34,9 @@ return (
             onClick={()=>{
                 if(sendedTodo.complete === true){return}
 
-                isEditable? setisEditable((prev) => !prev) : editTodo()
-                
+               if(isEditable){
+                editTodo()
+                }else(setisEditable((prev) => !prev)) 
             }}
             >{isEditable ? "📁": "✏️" }</button>
 

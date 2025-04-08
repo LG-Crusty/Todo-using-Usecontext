@@ -16,9 +16,9 @@ let{ Todo, addTodo, updateTodo, deleteTodo, taskComplete} = useTodo()
       }, ...prev] })
  }
 
-  updateTodo = (id, Todo)=>{
+  updateTodo = (id, newMsg)=>{
   setTask((prev)=>prev.map((e)=>{
-    return  e.id === id? (e.task = Todo) : e}))
+    return  e.id === id? {...e, task : newMsg} : e}))
   }
 
    deleteTodo = (id)=>{
